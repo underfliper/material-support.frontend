@@ -1,0 +1,26 @@
+$colors: (
+  primary: #911b20,
+  primary-disabled: #911b219f,
+  text: #000,
+  text-readonly: #6f6f6f,
+  background-main: #ffffff,
+  background-semi: #f9f5f5,
+  background-semi-dark: #c4c4c4,
+  background-transparent: rgba(0, 0, 0, 0.25),
+);
+
+$grid-breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+);

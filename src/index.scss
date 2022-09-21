@@ -1,1 +1,43 @@
+@use 'sass:map';
 
+@import-normalize;
+@import '../src/assets/variables.scss';
+@import './assets/mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#root {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+[class*='__container'] {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  height: 100%;
+  @include make-max-width-container();
+}
+
+[class*='__title'] {
+  margin: 0;
+  margin-bottom: 45px;
+  font-weight: 400;
+  font-size: 39px;
+}
+
+[class*='__subtitle'] {
+  margin: 0;
+  font-weight: 400;
+  font-size: 22px;
+}

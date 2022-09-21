@@ -1,0 +1,21 @@
+@use 'sass:map';
+
+@import '/src/assets/variables.scss';
+
+@mixin make-max-width-container($max-widths: $container-max-widths) {
+  @each $breakpoint, $max-width in $max-widths {
+    @include respond-to($breakpoint) {
+      max-width: $max-width;
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    @media screen and (min-width: map-get($grid-breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}

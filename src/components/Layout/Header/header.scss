@@ -1,0 +1,44 @@
+@use 'sass:map';
+
+@import '../../../assets/variables.scss';
+@import '../../../assets/mixins.scss';
+
+.header {
+  height: 60px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.logo {
+  height: 100%;
+  &__img {
+    height: 100%;
+
+    &.mini {
+      display: block;
+
+      @include respond-to(sm) {
+        display: none;
+      }
+    }
+
+    &.full {
+      display: none;
+
+      @include respond-to(sm) {
+        display: block;
+      }
+    }
+  }
+}
