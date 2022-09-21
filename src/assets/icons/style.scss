@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'MaterialSupport';
+  src:  url('fonts/MaterialSupport.eot?smq7qo');
+  src:  url('fonts/MaterialSupport.eot?smq7qo#iefix') format('embedded-opentype'),
+    url('fonts/MaterialSupport.ttf?smq7qo') format('truetype'),
+    url('fonts/MaterialSupport.woff?smq7qo') format('woff'),
+    url('fonts/MaterialSupport.svg?smq7qo#MaterialSupport') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'MaterialSupport' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-accept:before {
+  content: "\e900";
+}
+.icon-add:before {
+  content: "\e901";
+}
+.icon-arrow-down:before {
+  content: "\e902";
+}
+.icon-arrow-up:before {
+  content: "\e903";
+}
+.icon-close:before {
+  content: "\e904";
+}
+.icon-decline:before {
+  content: "\e905";
+}
+.icon-doc:before {
+  content: "\e906";
+}
+.icon-edit:before {
+  content: "\e907";
+}
+.icon-enter:before {
+  content: "\e908";
+}
+.icon-exit:before {
+  content: "\e909";
+}
+.icon-eye:before {
+  content: "\e90a";
+}
+.icon-eye-off:before {
+  content: "\e90b";
+}
+.icon-file-tray:before {
+  content: "\e90c";
+}
+.icon-person:before {
+  content: "\e90d";
+}
+.icon-search:before {
+  content: "\e90e";
+}
+.icon-settings:before {
+  content: "\e90f";
+}
+.icon-telegram:before {
+  content: "\e910";
+}
+.icon-trash:before {
+  content: "\e911";
+}
+.icon-vk:before {
+  content: "\e912";
+}
