@@ -1,19 +1,79 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { useAppDispatch } from './app/hooks/hooks'
+import jwtDecode from 'jwt-decode'
+import {
+  AuthToken,
+  tokenExpire,
+  userAuthenticated,
+} from './app/store/authSlice'
+
 import Layout from './components/Layout'
+import PrivateRoute from './components/PrivateRoute'
 
 const App: React.FC = () => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('token')
+
+    if (token) {
+      const { exp } = jwtDecode<AuthToken>(token)
+
+      if (exp * 1000 < Date.now()) {
+        dispatch(tokenExpire())
+      } else {
+        dispatch(userAuthenticated({ token }))
+      }
+    }
+  })
+
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<>Главная</>} />
-          <Route path="/applications" element={<>Управление заявлениями</>} />
-          <Route path="/admin-panel" element={<>Панель администрации</>} />
-          <Route path="/information" element={<>Информация</>} />
-          <Route path="/profile" element={<>Личный кабинет</>} />
-          <Route path="/apply" element={<>Подать заявление</>} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute roles={['Student']}>
+                <>Личный кабинет</>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/applications"
+            element={
+              <PrivateRoute roles={['Admin', 'Moderator']}>
+                <>Заявления</>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin-panel"
+            element={
+              <PrivateRoute roles={['Admin', 'Moderator']}>
+                <>Панель администрации</>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/information"
+            element={
+              <PrivateRoute roles={['Guest', 'Student']}>
+                <>Информация</>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/apply"
+            element={
+              <PrivateRoute roles={['Student']}>
+                <>Подать заявление</>
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<h2>Страница не найдена</h2>} />
         </Routes>
       </Layout>
