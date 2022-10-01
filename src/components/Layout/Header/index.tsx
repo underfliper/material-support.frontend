@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../../assets/img/logo.svg'
 import logo_mini from '../../../assets/img/logo_mini.svg'
+import NavBar from '../Navbar'
 
 import './header.scss'
 
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
           <img src={logo} alt="Логотип" className="logo__img full" />
           <img src={logo_mini} alt="Логотип" className="logo__img mini" />
         </a>
+        <NavBar />
       </div>
     </header>
   )

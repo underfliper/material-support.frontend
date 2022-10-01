@@ -1,0 +1,110 @@
+@use 'sass:map';
+
+@import '../../../assets/variables.scss';
+@import '../../../assets/mixins.scss';
+
+.navbar {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+
+  #navbar__toggle {
+    display: none;
+  }
+
+  #navbar__toggle:checked ~ &__toggle-button > span {
+    transform: rotate(45deg);
+  }
+
+  #navbar__toggle:checked ~ &__toggle-button > span::before {
+    top: 0;
+    opacity: 0;
+    transform: rotate(0);
+  }
+
+  #navbar__toggle:checked ~ &__toggle-button > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #navbar__toggle:checked ~ &__menu {
+    right: 0px;
+  }
+
+  &__toggle-button {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    & > span,
+    & > span::before,
+    & > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: map-get($map: $colors, $key: primary);
+      transition: transform 0.4s;
+    }
+
+    & > span::before {
+      content: '';
+      top: -8px;
+    }
+
+    & > span::after {
+      content: '';
+      top: 8px;
+    }
+
+    @include respond-to(xl) {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: map-get($map: $colors, $key: background-main);
+    transition: right 0.4s;
+
+    @include respond-to(xl) {
+      position: static;
+      flex-direction: row;
+      width: auto;
+      height: auto;
+      font-weight: 600;
+      background: none;
+    }
+  }
+
+  &__item {
+    margin: 0;
+    height: 100px;
+
+    @include respond-to(xl) {
+      margin-left: 20px;
+      height: auto;
+
+      &:nth-child(1) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__button {
+    font-size: 30px;
+  }
+}
