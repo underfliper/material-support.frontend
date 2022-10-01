@@ -1,0 +1,55 @@
+@use 'sass:map';
+
+@import '../../assets/variables.scss';
+
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+
+  &__item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: map-get($map: $colors, $key: text);
+
+    &.primary {
+      color: map-get($map: $colors, $key: primary);
+    }
+
+    &:hover,
+    &.active {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 5px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    color: map-get($map: $colors, $key: text);
+
+    &.primary {
+      color: map-get($map: $colors, $key: primary);
+    }
+  }
+}
