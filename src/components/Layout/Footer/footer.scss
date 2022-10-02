@@ -4,6 +4,7 @@
 @import '../../../assets/mixins.scss';
 
 .footer {
+  position: relative;
   height: 120px;
   background: map-get($colors, background-semi);
   box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.1);
