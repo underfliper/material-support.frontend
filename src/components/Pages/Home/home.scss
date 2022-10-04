@@ -1,0 +1,97 @@
+@use 'sass:map';
+
+@import '../../../assets/variables.scss';
+@import '../../../assets/mixins.scss';
+
+.home {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  &__title {
+    font-size: 35px !important;
+    font-weight: 500;
+
+    @include respond-to(sm) {
+      font-size: 40px !important;
+    }
+
+    @include respond-to(md) {
+      font-size: 45px !important;
+    }
+
+    @include respond-to(lg) {
+      font-size: 50px !important;
+    }
+  }
+
+  .login {
+    margin-bottom: 25px;
+    font-size: 18px;
+
+    &__title {
+      font-size: 25px !important;
+      margin-bottom: 25px !important;
+      font-weight: 500;
+      color: map-get($map: $colors, $key: primary);
+
+      @include respond-to(sm) {
+        font-size: 30px !important;
+      }
+
+      @include respond-to(md) {
+        font-size: 35px !important;
+      }
+
+      @include respond-to(lg) {
+        font-size: 40px !important;
+      }
+    }
+
+    &__input {
+      margin-bottom: 25px;
+      width: 100%;
+
+      &__wrapper {
+        width: 100%;
+
+        input {
+          width: 100%;
+
+          @include respond-to(md) {
+            width: auto;
+          }
+        }
+
+        @include respond-to(md) {
+          width: max-content;
+        }
+      }
+    }
+
+    &__button {
+      padding: 10px 45px;
+    }
+
+    @include respond-to(sm) {
+      margin-bottom: 45px;
+    }
+
+    @include respond-to(md) {
+      margin-bottom: 65px;
+      font-size: 19px;
+    }
+
+    @include respond-to(lg) {
+      margin-bottom: 85px;
+      font-size: 20px;
+    }
+
+    @include respond-to(lg) {
+      margin-bottom: 100px;
+      font-size: 22px;
+    }
+  }
+}

@@ -10,6 +10,7 @@ import {
 
 import Layout from './components/Layout'
 import PrivateRoute from './components/PrivateRoute'
+import Home from './components/Pages/Home'
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -33,7 +34,7 @@ const App: React.FC = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<>Главная</>} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/profile"
             element={
@@ -58,14 +59,7 @@ const App: React.FC = () => {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/information"
-            element={
-              <PrivateRoute roles={['Guest', 'Student']}>
-                <>Информация</>
-              </PrivateRoute>
-            }
-          />
+          <Route path="/information" element={<>Информация</>} />
           <Route
             path="/apply"
             element={
