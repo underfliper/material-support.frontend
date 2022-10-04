@@ -6,7 +6,11 @@ type MainProps = {
 }
 
 const Main: React.FC<MainProps> = (props) => {
-  return <main className="main">{props.children}</main>
+  return (
+    <main className="main">
+      <div className="main__container">{props.children}</div>
+    </main>
+  )
 }
 
 export default Main

@@ -5,10 +5,9 @@
 .main {
   position: relative;
   display: flex;
+  flex-direction: column;
   flex: 1 1 auto;
   margin-top: 60px;
-  padding-top: 45px;
-  padding-bottom: 45px;
 
   &::before {
     content: ' ';
@@ -43,5 +42,13 @@
     @include respond-to(xxl) {
       background-size: 25%;
     }
+  }
+
+  &__container {
+    display: flex;
+    flex: 1 1 auto;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    width: 100%;
   }
 }
