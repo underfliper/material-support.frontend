@@ -60,10 +60,13 @@
 }
 
 .social {
+  display: flex;
   height: 100%;
 
   &__item {
     padding: 5px;
+    height: max-content;
+    display: flex;
     font-size: 25px;
     text-decoration: none;
     color: map-get($colors, primary);

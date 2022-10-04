@@ -14,14 +14,12 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <div className="social footer__social">
-          <div className="social_items">
-            <a className="social__item" href="/">
-              <i className="icon-vk"></i>
-            </a>
-            <a className="social__item" href="/">
-              <i className="icon-telegram"></i>
-            </a>
-          </div>
+          <a className="social__item" href="/">
+            <i className="icon-vk"></i>
+          </a>
+          <a className="social__item" href="/">
+            <i className="icon-telegram"></i>
+          </a>
         </div>
       </div>
     </footer>
