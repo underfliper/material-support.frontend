@@ -6,7 +6,9 @@ $colors: (
   background-main: #ffffff,
   background-semi: #f9f5f5,
   background-semi-dark: #c4c4c4,
-  background-transparent: rgba(0, 0, 0, 0.25),
+  black-25: rgba(0, 0, 0, 0.25),
+  black-50: rgba(0, 0, 0, 0.5),
+  black-75: rgba(0, 0, 0, 0.75),
 );
 
 $grid-breakpoints: (
