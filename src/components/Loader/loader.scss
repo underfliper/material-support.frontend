@@ -1,0 +1,27 @@
+@use 'sass:map';
+
+@import '../../assets/variables.scss';
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__circle {
+    border: 10px solid map-get($map: $colors, $key: background-semi);
+    border-top: 10px solid map-get($map: $colors, $key: primary);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

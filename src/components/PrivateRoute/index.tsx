@@ -2,6 +2,7 @@ import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAppSelector } from '../../app/hooks/hooks'
 import { AllowedRole } from '../../app/store/authSlice'
+import Loader from '../Loader'
 
 type PrivateRouteProps = {
   children: React.ReactNode
@@ -18,7 +19,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   )
 
   if (loading) {
-    return <p>Checking auth...</p>
+    return <Loader />
   }
 
   if (!isAuthenticated) {

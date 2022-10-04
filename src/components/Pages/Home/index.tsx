@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../app/hooks/hooks'
 import { login, LoginCredentials } from '../../../services/auth'
 import Button from '../../Button'
 import Input from '../../Input'
+import Loader from '../../Loader'
 
 import './home.scss'
 
@@ -14,7 +15,9 @@ type LoginErrors = {
 const Home: React.FC = () => {
   const location = useLocation()
   const dispatch = useAppDispatch()
-  const { user, isAuthenticated } = useAppSelector((state) => state.auth)
+  const { user, isAuthenticated, loading } = useAppSelector(
+    (state) => state.auth,
+  )
   const [formErrors, setFormErrors] = useState({} as LoginErrors)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,6 +77,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home">
+      {loading && <Loader />}
       <h1 className="home__title">
         Система для электронной подачи заявлений на выделение материальной
         помощи
