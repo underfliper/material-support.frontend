@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+@import '../../assets/variables.scss';
+@import '../../assets/mixins.scss';
+
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  font-size: inherit;
+
+  &__label {
+    width: max-content;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: max-content;
+
+    input {
+      display: block;
+      padding: 5px 10px;
+      border: none;
+      outline: map-get($map: $colors, $key: text) solid 1px;
+      border-radius: 10px;
+      font-size: inherit;
+      font-family: inherit;
+
+      &::placeholder {
+        opacity: 1;
+        color: map-get($map: $colors, $key: text-readonly);
+      }
+
+      :-ms-input-placeholder {
+        color: map-get($map: $colors, $key: text-readonly);
+      }
+
+      ::-ms-input-placeholder {
+        color: map-get($map: $colors, $key: text-readonly);
+      }
+
+      &:read-only {
+        color: map-get($map: $colors, $key: text-readonly);
+        opacity: 0.8;
+      }
+
+      &:focus {
+        outline: map-get($map: $colors, $key: primary) solid 2px;
+
+        &:read-only {
+          outline: map-get($map: $colors, $key: text) solid 1px;
+        }
+      }
+    }
+  }
+
+  &__show {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    height: 100%;
+    border: none;
+    background: none;
+    font-size: inherit;
+  }
+
+  &__error {
+    margin-left: 5px;
+    font-size: 0.8em;
+    color: map-get($map: $colors, $key: primary);
+  }
+}
