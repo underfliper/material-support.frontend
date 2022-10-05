@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { toastPromise } from '../app/utils'
 
 const axios = require('axios').default
 
@@ -11,14 +12,37 @@ export type LoginCredentials = {
   password: string
 }
 
-export const login = createAsyncThunk<{ token: string }, LoginCredentials>(
+type LoginAPIResponse = {
+  token: string
+}
+
+type LoginAPIError = {
+  message: string
+  response: {
+    data: string
+    status: number
+  }
+}
+
+export const login = createAsyncThunk(
   'auth/login',
-  async (credentials) => {
+  async (credentials: LoginCredentials): Promise<LoginAPIResponse> => {
     const response = await axiosInstance
       .post('/login', credentials)
-      .catch((err: { message: string; response: { data: string } }) => {
-        throw new Error(err.response.data || err.message)
+      .catch((error: LoginAPIError) => {
+        throw new Error(error.response.data || error.message)
       })
-    return response.data
+
+    return (await response.data) as LoginAPIResponse
   },
 )
+
+export const loginWithToast = toastPromise(login, {
+  pending: 'Выполняется вход в аккаунт...',
+  error: {
+    render: ({ data }) => {
+      return data.message
+    },
+  },
+  success: 'Вход в аккаунт успешно выполнен.',
+})

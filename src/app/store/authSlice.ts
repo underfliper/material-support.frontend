@@ -98,8 +98,6 @@ export const authSlice = createSlice({
         state.error = ''
 
         sessionStorage.setItem('token', action.payload.token)
-
-        toast.info('Выполнен вход в аккаунт')
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false
@@ -109,8 +107,6 @@ export const authSlice = createSlice({
           role: 'Guest',
         }
         state.error = action.error.message
-
-        toast.error(action.error.message)
       })
   },
 })
