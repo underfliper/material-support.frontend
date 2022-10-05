@@ -40,3 +40,38 @@ body {
   font-weight: 400;
   font-size: 22px;
 }
+
+.Toastify__toast-container {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  left: 0;
+
+  @include respond-to(sm) {
+    left: auto;
+    padding: 4px;
+    width: var(--toastify-toast-width);
+  }
+}
+
+.Toastify__toast {
+  margin-bottom: 0;
+  border-radius: 0;
+
+  @include respond-to(sm) {
+    left: auto;
+    padding: 4px;
+    margin-bottom: 1em;
+    width: var(--toastify-toast-width);
+    border-radius: 4px;
+  }
+}
+
+.Toastify__toast-container--top-right {
+  top: 0;
+
+  @include respond-to(sm) {
+    top: 70px;
+    right: 1em;
+  }
+}

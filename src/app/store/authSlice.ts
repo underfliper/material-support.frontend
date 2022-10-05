@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import jwtDecode from 'jwt-decode'
 import { login } from '../../services/auth'
+import { toast } from 'react-toastify'
 
 export type AllowedRole = 'Student' | 'Moderator' | 'Admin' | 'Guest'
 
@@ -52,6 +53,7 @@ export const authSlice = createSlice({
     },
     logout: (state) => {
       sessionStorage.clear()
+      toast.info('Выполнен выход из аккаунта.')
 
       return {
         ...state,
@@ -66,6 +68,7 @@ export const authSlice = createSlice({
     },
     tokenExpire: (state) => {
       sessionStorage.clear()
+      toast.info('Истекло время сессии. Необходимо повторить вход в аккаунт.')
 
       return {
         ...state,
@@ -92,8 +95,11 @@ export const authSlice = createSlice({
         state.user = {
           role: jwtDecode<AuthToken>(action.payload.token).role,
         }
+        state.error = ''
 
         sessionStorage.setItem('token', action.payload.token)
+
+        toast.info('Выполнен вход в аккаунт')
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false
@@ -103,6 +109,8 @@ export const authSlice = createSlice({
           role: 'Guest',
         }
         state.error = action.error.message
+
+        toast.error(action.error.message)
       })
   },
 })
