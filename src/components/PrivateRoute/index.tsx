@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAppSelector } from '../../app/hooks/hooks'
-import { AllowedRole } from '../../app/store/authSlice'
+import { useAppDispatch, useAppSelector } from '../../app/hooks/hooks'
+import jwtDecode from 'jwt-decode'
+import { AllowedRole, AuthToken, tokenExpire } from '../../app/store/authSlice'
 import Loader from '../Loader'
 
 type PrivateRouteProps = {
@@ -13,10 +14,23 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   children,
   roles = [],
 }) => {
+  const dispatch = useAppDispatch()
   const location = useLocation()
   const { isAuthenticated, user, loading } = useAppSelector(
     (state) => state.auth,
   )
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('token')
+
+    if (token) {
+      const { exp } = jwtDecode<AuthToken>(token)
+
+      if (exp * 1000 < Date.now()) {
+        dispatch(tokenExpire())
+      }
+    }
+  })
 
   if (loading) {
     return <Loader />

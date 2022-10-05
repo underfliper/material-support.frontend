@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useAppDispatch } from './app/hooks/hooks'
-import jwtDecode from 'jwt-decode'
-import {
-  AuthToken,
-  tokenExpire,
-  userAuthenticated,
-} from './app/store/authSlice'
+import { userAuthenticated } from './app/store/authSlice'
 
 import Layout from './components/Layout'
 import PrivateRoute from './components/PrivateRoute'
@@ -19,13 +14,7 @@ const App: React.FC = () => {
     const token = sessionStorage.getItem('token')
 
     if (token) {
-      const { exp } = jwtDecode<AuthToken>(token)
-
-      if (exp * 1000 < Date.now()) {
-        dispatch(tokenExpire())
-      } else {
-        dispatch(userAuthenticated({ token }))
-      }
+      dispatch(userAuthenticated({ token }))
     }
   })
 
