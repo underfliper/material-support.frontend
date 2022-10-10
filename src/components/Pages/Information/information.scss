@@ -1,0 +1,14 @@
+@use 'sass:map';
+
+@import '../../../assets/variables.scss';
+@import '../../../assets/mixins.scss';
+
+.information {
+  &__title {
+    margin-top: 0;
+  }
+  &__subtitle {
+    font-size: 24px !important;
+    color: map-get($map: $colors, $key: primary);
+  }
+}

@@ -6,6 +6,7 @@ import { userAuthenticated } from './app/store/authSlice'
 import Layout from './components/Layout'
 import PrivateRoute from './components/PrivateRoute'
 import Home from './components/Pages/Home'
+import Information from './components/Pages/Information'
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -48,7 +49,7 @@ const App: React.FC = () => {
               </PrivateRoute>
             }
           />
-          <Route path="/information" element={<>Информация</>} />
+          <Route path="/information" element={<Information />} />
           <Route
             path="/apply"
             element={
