@@ -74,7 +74,7 @@
     top: 60px;
     right: -100%;
     height: calc(100vh - 60px);
-    width: 100vw;
+    width: 100%;
     font-weight: 600;
     font-size: 16px;
     background-color: map-get($map: $colors, $key: background-main);
