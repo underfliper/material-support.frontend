@@ -11,8 +11,9 @@
   width: 100%;
 
   &__title {
+    margin-top: 0 !important;
     font-size: 35px !important;
-    font-weight: 500;
+    font-weight: 400 !important;
 
     @include respond-to(sm) {
       font-size: 40px !important;
@@ -75,22 +76,15 @@
       padding: 10px 45px;
     }
 
-    @include respond-to(sm) {
-      margin-bottom: 45px;
-    }
-
     @include respond-to(md) {
-      margin-bottom: 65px;
       font-size: 19px;
     }
 
     @include respond-to(lg) {
-      margin-bottom: 85px;
       font-size: 20px;
     }
 
     @include respond-to(lg) {
-      margin-bottom: 100px;
       font-size: 22px;
     }
   }

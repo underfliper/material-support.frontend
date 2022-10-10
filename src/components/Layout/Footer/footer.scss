@@ -24,8 +24,9 @@
 
 .contacts {
   &__title {
-    color: map-get($colors, text);
+    margin: 0 !important;
     margin-bottom: 5px !important;
+    color: map-get($colors, text);
     font-size: 14px !important;
 
     @include respond-to(sm) {
